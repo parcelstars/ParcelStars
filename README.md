@@ -83,7 +83,7 @@ try {
     ->setPhoneNumber('phone_number')
     ->setCountryId('country_id');
 
-} catch (ItellaException $e) {
+} catch (ParcelStarsException $e) {
   // Handle validation exceptions here
 }
 ```

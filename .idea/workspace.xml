@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ecbc985-4c21-4332-b026-5a4805a075aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/examples/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/API.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/API.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parcel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parcel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Receiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Receiver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -56,7 +47,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597666120912</updated>
-      <workItem from="1597666122602" duration="6331000" />
+      <workItem from="1597666122602" duration="6622000" />
+      <workItem from="1597673393960" duration="17000" />
     </task>
     <servers />
   </component>
