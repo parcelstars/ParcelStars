@@ -35,6 +35,16 @@ class Sender extends Person
         );
     }
 
+    public function generateSenderOffers()
+    {
+        if (!$this->zipcode) throw new Siusk24LTException('All the fields must be filled. zipcode is missing.');
+        if (!$this->country_id) throw new Siusk24LTException('All the fields must be filled. country_id is missing.');
+        return array(
+            'zipcode' => $this->zipcode,
+            'country_id' => $this->country_id
+        );
+    }
+
     public function returnJson()
     {
         return $this->json_encode(generateSender());

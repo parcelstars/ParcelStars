@@ -9,9 +9,10 @@ use ParcelStars\Exception\ParcelStarsException;
  */
 class Item
 {
-    private $description;
+    private string $description;
     private $item_price;
-    private $item_amount;
+    private int $item_amount;
+    private string $hs_code;
 
     public function __construct()
     {
@@ -39,15 +40,24 @@ class Item
         return $this;
     }
 
+    public function setHsCode($hs_code)
+    {
+        $this->hs_code = $hs_code;
+
+        return $this;
+    }
+
     public function generateItem()
     {
         if (!$this->description) throw new ParcelStarsException('All the fields must be filled. description is missing.');
         if (!$this->item_price) throw new ParcelStarsException('All the fields must be filled. item_price is missing.');
         if (!$this->item_amount) throw new ParcelStarsException('All the fields must be filled. item_amount is missing.');
+        if (!$this->item_amount) throw new ParcelStarsException('All the fields must be filled. hs_code is missing.');
         return array(
             'description' => $this->description,
             'item_price' => $this->item_price,
-            'item_amount' => $this->item_amount
+            'item_amount' => $this->item_amount,
+            'hs_code' => $this->hs_code
         );
     }
 

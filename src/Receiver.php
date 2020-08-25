@@ -68,6 +68,26 @@ class Receiver extends Person
         return $receiver;
     }
 
+    public function generateReceiverOffers()
+    {
+        if (!$this->zipcode) throw new Siusk24LTException('All the fields must be filled. zipcode is missing.');
+        if (!$this->country_id) throw new Siusk24LTException('All the fields must be filled. country_id is missing.');
+
+
+
+        $receiver = array(
+            'zipcode' => $this->zipcode,
+            'country_id' => $this->country_id
+        );
+
+        if ($this->shipping_type === self::SHIPPING_COURIER)
+            $receiver += [ 'zipcode' => $this->zipcode ];
+        if ($this->shipping_type === self::SHIPPING_TERMINAL)
+            $receiver += [ 'parcel_terminal_zipcode' => $this->zipcode ];
+
+        return $receiver;
+    }
+
 
     public function returnJson()
     {

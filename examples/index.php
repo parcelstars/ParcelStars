@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="lt">
 <body>
 <?php
 
@@ -20,11 +20,11 @@ use ParcelStars\Exception\ParcelStarsException;
 $token = "KW7z763Gd5ok8ArSHQ5Lqwtt";
 
 try {
-    $ps = new API($token, true);
+    $ps = new API($token, true, true);
 
     $sender1 = new Sender();
     $sender1
-    ->setCompanyName('TEST')
+        ->setCompanyName('TEST')
         ->setContactName('TEST')
         ->setStreetName('TEST')
         ->setZipcode('48311')
@@ -88,13 +88,15 @@ try {
         ->setWidth(20)
         ->setLength(20)
         ->setHeight(20);
-    $parcels1 = array($parcel1->generateParcel());
+    $parcels1 = array($parcel1->generateParcel(), $parcel1->generateParcel());
+    $parcels2 = array($parcel1->generateParcelOffers());
 
     $item1 = new Item();
     $item1
         ->setDescription('test package')
         ->setItemPrice(5)
-        ->setItemAmount(1);
+        ->setItemAmount(1)
+        ->setHsCode('12345');
     $item2 = new Item();
     $item2
         ->setDescription('test package')
@@ -153,8 +155,9 @@ try {
     //$manifest                           = $ps->generateManifest(array('W2S081137782', 'W2S081137783'));
     //$makePickupResult                   = $ps->makePickup('W2S0627258');
     //$orderTrackingInfo                  = $ps->trackOrder('W2S030418190');
-    $generateOrderResult = $ps->generateOrder($order3);
+    //$generateOrderResult                = $ps->generateOrder($order3);
     //$generateOrder_parcelTerminalResult = $ps->generateOrder_parcelTerminal($order2);
+    $Offers = $ps->getOffers('parcel', $sender1, $receiver1, $parcels2);
 
     //echo json_encode($allCountries);
     //echo json_encode($departments);
@@ -164,8 +167,9 @@ try {
     //echo json_encode($manifest);
     //echo json_encode($makePickupResult);
     //echo json_encode($orderTrackingInfo);
-    echo json_encode($generateOrderResult);
+    //echo json_encode($generateOrderResult);
     //echo json_encode($generateOrder_parcelTerminalResult);
+    echo json_encode($Offers);
 } catch (ParcelStarsException $e) {
     echo $e->getMessage();
 }

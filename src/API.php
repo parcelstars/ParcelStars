@@ -9,8 +9,9 @@ class API
 {
     protected $url = "https://demo.parcelstars.com/api/";
     protected $token;
+    private bool $debug_mode;
 
-    public function __construct($token = false, $test_mode = false)
+    public function __construct($token = false, $test_mode = false, $api_debug_mode = false)
     {
         if (!$token) {
             throw new ParcelStarsException("ParcelStars user Token is required");
@@ -20,6 +21,10 @@ class API
 
         if (!$test_mode) {
             $this->url = "https://www.parcelstars.com/api/";
+        }
+
+        if ($api_debug_mode) {
+            $this->debug_mode = $api_debug_mode;
         }
     }
 
@@ -51,7 +56,21 @@ class API
 
         curl_close($ch);
 
-        //echo json_encode($data);
+        if ($this->debug_mode) {
+            echo '<b>Token:</b><br><br>';
+            echo $this->token;
+            echo '<br><br>';
+            echo '<b>Endpoint:</b><br><br>';
+            echo $url;
+            echo '<br><br>';
+            echo '<b>Data passed:</b><br><br>';
+            echo  json_encode($data, JSON_PRETTY_PRINT);
+            echo '<br><br>';
+            echo '<b>Data returned:</b><br><br>';
+            echo json_encode($response, JSON_PRETTY_PRINT);
+            echo '<br><br>';
+            echo '<b>Default API lib response:</b><br><br>';
+        }
 
         return $this->handleApiResponse($response, $httpCode);
     }
@@ -72,14 +91,14 @@ class API
             //echo 'messages:<br><br>';
             //echo $response;
             //echo '<br><br>';
-            throw new ValidationException(debug_backtrace()[2]['function'] . ':<br><br>' . implode(", \n", $errors['messages'][0]));
+            throw new ValidationException(debug_backtrace()[2]['function'] . '():<br><br>' . implode(", \n", $errors['messages'][0]));
         }
 
         if (isset($errors['error'])) {
             //echo 'errors:<br><br>';
             //echo $response;
             echo debug_backtrace()[2]['function'];
-            throw new ValidationException(debug_backtrace()[2]['function'] . ':<br><br>' . $errors['error']);
+            throw new ValidationException(debug_backtrace()[2]['function'] . '():<br><br>' . $errors['error']);
         }
 
         throw new ParcelStarsException('API responded with error: ' . $response);
@@ -105,6 +124,19 @@ class API
         $response = $this->callAPI($this->url . 'services');
 
         return $response->services;
+    }
+
+    public function getOffers(string $parcel_type, Sender $sender, Receiver $receiver, $parcels)
+    {
+        $post_data = array(
+            'parcel_type' => $parcel_type,
+            'sender' => $sender->generateSenderOffers(),
+            'receiver' => $receiver->generateReceiverOffers(),
+            'parcels' => $parcels
+        );
+        $response = $this->callAPI($this->url . 'services/', $post_data);
+
+        return $response->offers;
     }
 
     public function getAllOrders()
@@ -152,7 +184,7 @@ class API
         return $response;
     }
 
-    public function cancelOrder()
+    public function cancelOrder($shipment_id)
     {
         $response = $this->callAPI($this->url . 'orders/' . $shipment_id . '/cancel');
 
