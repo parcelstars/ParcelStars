@@ -9,10 +9,10 @@ use ParcelStars\Exception\ParcelStarsException;
  */
 class Item
 {
-    private string $description;
+    private $description;
     private $item_price;
-    private int $item_amount;
-    private string $hs_code;
+    private $item_amount;
+    private $hs_code;
 
     public function __construct()
     {

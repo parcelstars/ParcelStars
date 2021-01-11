@@ -9,7 +9,7 @@ class API
 {
     protected $url = "https://demo.parcelstars.com/api/";
     protected $token;
-    private bool $debug_mode;
+    private $debug_mode;
 
     public function __construct($token = false, $test_mode = false, $api_debug_mode = false)
     {
@@ -112,11 +112,25 @@ class API
         return $response->countries;
     }
 
+    public function listAllStates()
+    {
+        $response = $this->callAPI($this->url . 'services/states');
+
+        return $response->states;
+    }
+
     public function getDepartments()
     {
         $response = $this->callAPI($this->url . 'departments');
 
         return $response->departments;
+    }
+
+    public function getImporters()
+    {
+        $response = $this->callAPI($this->url . 'importers');
+
+        return $response->importers;
     }
 
     public function listAllServices()
@@ -127,6 +141,19 @@ class API
     }
 
     public function getOffers(string $parcel_type, Sender $sender, Receiver $receiver, $parcels)
+    {
+        $post_data = array(
+            'parcel_type' => $parcel_type,
+            'sender' => $sender->generateSenderOffers(),
+            'receiver' => $receiver->generateReceiverOffers(),
+            'parcels' => $parcels
+        );
+        $response = $this->callAPI($this->url . 'services/', $post_data);
+
+        return $response->offers;
+    }
+
+    public function getOffers_parcelTerminal(string $parcel_type, Sender $sender, Receiver $receiver, $parcels)
     {
         $post_data = array(
             'parcel_type' => $parcel_type,
