@@ -96,12 +96,14 @@ try {
         ->setDescription('test package')
         ->setItemPrice(5)
         ->setItemAmount(1)
-        ->setHsCode('12345');
+        ->setHsCode('12345')
+        ->setCountryId(26);
     $item2 = new Item();
     $item2
         ->setDescription('test package')
         ->setItemPrice(1)
-        ->setItemAmount(3);
+        ->setItemAmount(3)
+        ->setCountryId(26);
     $items1 = array($item1->generateItem());
 
     $callback_urls = array(
