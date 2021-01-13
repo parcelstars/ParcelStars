@@ -103,6 +103,7 @@ try {
         ->setDescription('test package')
         ->setItemPrice(1)
         ->setItemAmount(3)
+        ->setHsCode('12345')
         ->setCountryId(26);
     $items1 = array($item1->generateItem());
 
