@@ -60,7 +60,7 @@ class Item
         if (!$this->description) throw new ParcelStarsException('All the fields must be filled. description is missing.');
         if (!$this->item_price) throw new ParcelStarsException('All the fields must be filled. item_price is missing.');
         if (!$this->item_amount) throw new ParcelStarsException('All the fields must be filled. item_amount is missing.');
-        if (!$this->item_amount) throw new ParcelStarsException('All the fields must be filled. hs_code is missing.');
+        if (!$this->hs_code) throw new ParcelStarsException('All the fields must be filled. hs_code is missing.');
         if (!$this->country_id) throw new ParcelStarsException('All the fields must be filled. country_id is missing.');
         return array(
             'description' => $this->description,
