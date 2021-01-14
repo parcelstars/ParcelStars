@@ -7,13 +7,13 @@ namespace ParcelStars;
  */
 class Person
 {
-    protected string $company_name;
-    protected string $contact_name;
-    protected string $street_name;
-    protected string $zipcode;
-    protected string $city;
-    protected string $phone_number;
-    protected int $country_id;
+    protected $company_name;
+    protected $contact_name;
+    protected $street_name;
+    protected $zipcode;
+    protected $city;
+    protected $phone_number;
+    protected $country_id;
 
     public function __construct()
     {

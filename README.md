@@ -121,6 +121,8 @@ $item
   ->setDescription('description')
   ->setItemPrice(5)
   ->setItemAmount(1)
+  ->setHsCode('12345')
+  ->setCountryId(26);
 ```
 
 
@@ -169,12 +171,16 @@ $item1 = new Item();
 $item1
     ->setDescription('test package')
     ->setItemPrice(5)
-    ->setItemAmount(1);
+    ->setItemAmount(1)
+    ->setHsCode('12345')
+    ->setCountryId(26);
 $item2 = new Item();
 $item2
     ->setDescription('test package')
     ->setItemPrice(1)
-    ->setItemAmount(3);
+    ->setItemAmount(3)
+    ->setHsCode('12345')
+    ->setCountryId(26);
 
 $items = array($item1, $item2);
 
