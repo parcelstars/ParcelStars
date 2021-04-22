@@ -30,6 +30,7 @@ try {
         ->setZipcode('48311')
         ->setCity("TEST")
         ->setPhoneNumber('37061234567')
+        ->setEmail('test@test.tt')
         ->setCountryId('122');
     $sender2 = new Sender();
     $sender2
@@ -62,6 +63,7 @@ try {
         ->setZipcode('12-345')
         ->setCity('TEST')
         ->setPhoneNumber('+37061234567')
+        ->setEmail('test@test.tt')
         ->setCountryId('116');
 
     $receiver2

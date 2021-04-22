@@ -31,6 +31,7 @@ class Sender extends Person
             'zipcode' => $this->zipcode,
             'city' => $this->city,
             'phone_number' => $this->phone_number,
+            'email' => $this->email,
             'country_id' => $this->country_id
         );
     }

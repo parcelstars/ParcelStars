@@ -57,6 +57,7 @@ class Receiver extends Person
             'street_name' => $this->street_name,
             'city' => $this->city,
             'phone_number' => $this->phone_number,
+            'email' => $this->email,
             'country_id' => $this->country_id
         );
 

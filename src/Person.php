@@ -2,6 +2,8 @@
 
 namespace ParcelStars;
 
+use ParcelStars\Exception\ParcelStarsException;
+
 /**
  *
  */
@@ -14,6 +16,7 @@ class Person
     protected $city;
     protected $phone_number;
     protected $country_id;
+    protected $email;
 
     public function __construct()
     {
@@ -66,5 +69,16 @@ class Person
         $this->country_id = $country_id;
 
         return $this;
+    }
+
+    public function setEmail($email) {
+      if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
+        $this->email = $email;
+
+        return $this;
+      }
+      else {
+        throw new ParcelStarsException('All the fields must be filled. company_name is missing.');
+      }
     }
 }
