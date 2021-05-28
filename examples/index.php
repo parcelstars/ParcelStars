@@ -20,7 +20,11 @@ use ParcelStars\Exception\ParcelStarsException;
 $token = "KW7z763Gd5ok8ArSHQ5Lqwtt";
 
 try {
-    $ps = new API($token, true, true);
+    // $token - your API token
+    // $test_mode - should test API be used? false by default.
+    // $api_debug_mode - Should request/response be printed on screen? false by default.
+    // $ps = new API($token); // For LIVE usage
+    $ps = new API($token, true, true); // Only for testing
 
     $sender1 = new Sender();
     $sender1
