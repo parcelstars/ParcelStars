@@ -7,7 +7,7 @@ use ParcelStars\Exception\ValidationException;
 
 class API
 {
-    protected $url = "https://demo.parcelstars.com/api/";
+    protected $url = "https://www.parcelstars.com/api/";
     protected $token;
     private $debug_mode;
 
